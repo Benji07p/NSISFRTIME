@@ -1,3 +1,4 @@
+from datetime import datetime
 def test():
   
   if calculer_age_jours(27,11,2007,30,11,2023)==5845:
@@ -45,25 +46,57 @@ def jours_dans_mois(m, a):
     if m == 2 and not bisextile(a):
         return 28
 
-def calculer_age_jours(j=27, m=11, a=2007, j_a=1, m_a=12, a_a=2023):
+def calculer_age_jours(j=27, m=11, a=2007, j_a=0, m_a=0, a_a=0):
+    
+    now = datetime.now()
+    if j_a==0:
+        j_a=int(now.strftime("%d"))
+    if m_a==0: 
+        m_a=int(now.strftime("%m"))
+    if a_a==0:
+        a_a=int(now.strftime("%Y"))
     
     jours=0
-    age=a_a-a
-    if bisextile(a)==True:
-      jours_age=age*366
-    elif bisextile(a)==False:
-      jours_age=age*365
+    a_en_cours=a
+    j_f=0
+    while a_a>a_en_cours:
+        a_en_cours=a_en_cours+1
+        if bisextile(a_en_cours)==True:
+            j_f=j_f+366
+        elif bisextile(a_en_cours)==False:
+            j_f=age*365
+    n=0
+    soustr_jours=0
+    while 1+n<m:
+        n=n+1
+        soustr_jours=soustr_jours+jours_dans_mois(n,a)
+    j_f=j_f-soustr_jours
+    t=0
+    soust_jours=0
+    while 12-t>m_a:
+        if jours_dans_mois(m_a,a_a)==
+            t=t+1
+            soust_jours=soust_jours+jours_dans_mois(12-t,a_a)
+        j_f=j_f-soust_jours
+    return j_f
     
+    
+def calculer_age(j=27, m=11, a=2007, j_a=0, m_a=0, a_a=0):
 
-def calculer_age(j=27, m=11, a=2007, j_a=1, m_a=12, a_a=2023):
-
+    now = datetime.now()
+    if j_a==0:
+        j_a=int(now.strftime("%d"))
+    if m_a==0: 
+        m_a=int(now.strftime("%m"))
+    if a_a==0:
+        a_a=int(now.strftime("%Y"))
+    
     j_s="Vendredi"
     heures_par_jour = 24
     minutes_par_heure = 60
     secondes_par_minute = 60
 
-    jours_age=calculer_age_jours(j,m,a,j_a,m_a,a_a)
-
+    jours_age = calculer_age_jours(j,m,a,j_a,m_a,a_a)
     if m_a>m: 
       if j_a>j:
         annee_age = a_a - a - 1
