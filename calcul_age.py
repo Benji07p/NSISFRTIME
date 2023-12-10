@@ -21,12 +21,14 @@ def test():
     else:
         print("C pas bon  :(")
         print("coup dur pour Guillaume")
+        
     print("Le test est né hier, mais le mois dernier")
     if calculer_age_jours(30,11,2023,1,12,2023)==1:
         print("C clean ;)")
     else:
         print("C pas bon  :(")
         print("coup dur pour Guillaume")
+        
     print("Le test est né hier, mais l\'année dernière")
     if calculer_age_jours(31,12,2022,1,1,2023)==1:
         print("C clean ;)")
@@ -71,7 +73,8 @@ def jours_dans_mois(m, a):
         return 29
     if m == 2 and not bisextile(a):
         return 28
-    raise ValueError('Heu, mon reuf,je n\'avais pas prévu ça')
+    raise ValueError('Heu, mon reuf,j\'avais pas prévu ça')
+
 
 # c'est le moteur pour calculer le nombre de jours entre 2 dates
 def calculer_age_jours(j, m, a, j_a, m_a, a_a):
@@ -129,9 +132,13 @@ def calculer_age(j, m, a):
     # on calcule l'age en années
     annee_age = a_a - a - 1
     # est-ce que son anniverssaire est déjà passé
-    if m_a>m or (m_a==m and j_a>j):
+    if m_a>m or (m_a==m and j_a>=j):
         # dans ce cas là on ajoute un an
         annee_age = annee_age + 1
+        # et on defini une variable qui va nous servir plus tard
+        prochain_anniv_cette_annee=1
+    else:
+        prochain_anniv_cette_annee=0
 
     # on calcule son age en mois
     mois_age = (a_a - a) * 12 + m_a - m
@@ -146,16 +153,23 @@ def calculer_age(j, m, a):
     secondes_age = minutes_age * secondes_par_minute
 
     # on cherche dans conbien de temps est son anniversaire
+    if prochain_anniv_cette_annee==1:
+        a_p=a_a+1
+    else:
+        a_p=a_a
+    prochain_anniv_jours=calculer_age_jours(j_a,m_a,a_a,j,m,a_p)
     if m<m_a:
         prochain_mois = m - m_a + 12
     elif m==m_a and j<j_a:
         prochain_mois = m - m_a + 11
     else:
         prochain_mois = m - m_a
+    # les jours
     if j>=j_a:
         prochain_jours = j - j_a
     else:
         prochain_jours = j - j_a + 30
+    # on affiche tout ça
     print("Ton âge en :")
     print("en annees:",annee_age)
     print("en mois:",mois_age)
@@ -163,16 +177,9 @@ def calculer_age(j, m, a):
     print("en heures:",heures_age)
     print("en minutes:",minutes_age)
     print("en secondes:",secondes_age)
-    if prochain_jours!=0:
-        if prochain_mois!=0:
-            print("ton prochain anniv est dans")
-        else:
-            print("ton prochain anniv est dans")
-    
-    if m==m_a and j==j_a:
-        print("Joyeux Anniversaire")
-    if prochain_mois!=0:
-        print(prochain_mois,"mois")
-    if prochain_jours!=0:
-        print(prochain_jours,"jours")
-  
+    # on regarde si son anniverssaire est aujourd'hui
+    if prochain_jours!=0 and prochain_mois!=0:
+        print("Ton prochain anniv est dans")
+        print(prochain_anniv_jours,"jours")
+    elif m==m_a and j==j_a:
+        print("Joyeux Anniversaire ;)")
