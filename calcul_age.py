@@ -16,7 +16,7 @@ def jours_dans_mois(m, a):
         return 29
     if m == 2 and not bissextile(a):
         return 28
-    raise ValueError('Heu, mon reuf,j\'avais pas prévu ça')
+    raise ValueError('Erreur de valeur')
 
 
 # Calculer le nombre de jours entre 2 dates
@@ -26,7 +26,7 @@ def calculer_nombre_jours(j, m, a, j_a, m_a, a_a):
     indice_date_naiss=a*12*31+m*31+j
     indice_date_aujour=a_a*12*31+m_a*31+j_a
     if indice_date_naiss>indice_date_aujour:
-        print('Heu, d\'où t\'es né après aujourd\'hui ?')
+        print("Vous ne pouvez pas rentrez une date après aujourd'hui !")
         return None
     
     # Pour chaque année :
