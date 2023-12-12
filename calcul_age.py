@@ -109,8 +109,8 @@ def calculer_age(j, m, a):
         prochain_mois_mois = m - m_a
     
     # Calculer les jours
-    # EN TRAVAUX
-    '''prochain_mois_jours=calculer_nombre_jours(j_a,m-1,a_p,j,m,a_p)+1'''
+    # En Travaux
+    #prochain_mois_jours=calculer_nombre_jours(j_a,m-1,a_p,j,m,a_p)+1
     
     # Afficher tous les résultats
     print("Ton âge en :")
@@ -124,9 +124,10 @@ def calculer_age(j, m, a):
     if prochain_mois_mois!=0 or prochain_mois_jours!=0:
         print("Ton prochain anniversaire est dans")
         print(prochain_anniv_jours,"jours")
-        if prochain_mois_mois!=0:
-            print("ou",prochain_mois_mois,"mois")
-            if prochain_mois_jours!=0:
-                print("et",prochain_mois_jours,"jours")
+        #En Travaux
+        #if prochain_mois_mois!=0:
+            #print("ou",prochain_mois_mois,"mois")
+            #if prochain_mois_jours!=0:
+                #print("et",prochain_mois_jours,"jours")
     elif m==m_a and j==j_a:
         print("Joyeux Anniversaire")
