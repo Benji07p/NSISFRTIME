@@ -74,7 +74,7 @@ def jours_dans_mois(m, a):
         return 29
     if m == 2 and not bissextile(a):
         return 28
-    raise ValueError('Heu, mon reuf,j\'avais pas prévu ça')
+    raise ValueError('Erreur de valeur')
 
 
 # Calculer le nombre de jours entre 2 dates
@@ -84,7 +84,7 @@ def calculer_nombre_jours(j, m, a, j_a, m_a, a_a):
     indice_date_naiss=a*12*31+m*31+j
     indice_date_aujour=a_a*12*31+m_a*31+j_a
     if indice_date_naiss>indice_date_aujour:
-        print('Heu, d\'où t\'es né après aujourd\'hui ?')
+        print("Vous ne pouvez pas rentrez une date après aujourd'hui !")
         return None
     
     # Pour chaque année :
@@ -143,6 +143,9 @@ def calculer_age(j, m, a):
 
     # Calculer l'age en mois
     mois_age = (a_a - a) * 12 + m_a - m
+    
+    # Calculer l'age en semaines
+    semaines_age = jours_age // 7
 
     # Calculer l'age en heures
     heures_age = jours_age * heures_par_jour
@@ -167,13 +170,14 @@ def calculer_age(j, m, a):
         prochain_mois_mois = m - m_a
     
     # Calculer les jours
-    # EN TRAVAUX
-    '''prochain_mois_jours=calculer_nombre_jours(j_a,m-1,a_p,j,m,a_p)+1'''
+    # En Travaux
+    #prochain_mois_jours=calculer_nombre_jours(j_a,m-1,a_p,j,m,a_p)+1
     
     # Afficher tous les résultats
     print("Ton âge en :")
     print("annees:",annee_age)
     print("mois:",mois_age)
+    print("semaines:",semaines_age)
     print("jours:",jours_age)
     print("heures:",heures_age)
     print("minutes:",minutes_age)
@@ -182,9 +186,11 @@ def calculer_age(j, m, a):
     if prochain_mois_mois!=0 or prochain_mois_jours!=0:
         print("Ton prochain anniversaire est dans")
         print(prochain_anniv_jours,"jours")
-        if prochain_mois_mois!=0:
-            print("ou",prochain_mois_mois,"mois")
-            if prochain_mois_jours!=0:
-                print("et",prochain_mois_jours,"jours")
+        #En Travaux
+        #if prochain_mois_mois!=0:
+            #print("ou",prochain_mois_mois,"mois")
+            #if prochain_mois_jours!=0:
+                #print("et",prochain_mois_jours,"jours")
     elif m==m_a and j==j_a:
         print("Joyeux Anniversaire")
+
