@@ -85,6 +85,9 @@ def calculer_age(j, m, a):
 
     # Calculer l'age en mois
     mois_age = (a_a - a) * 12 + m_a - m
+    
+    # Calculer l'age en semaines
+    semaines_age = jours_age // 7
 
     # Calculer l'age en heures
     heures_age = jours_age * heures_par_jour
@@ -116,6 +119,7 @@ def calculer_age(j, m, a):
     print("Ton âge en :")
     print("annees:",annee_age)
     print("mois:",mois_age)
+    print("semaines:",semaines_age)
     print("jours:",jours_age)
     print("heures:",heures_age)
     print("minutes:",minutes_age)
@@ -131,3 +135,4 @@ def calculer_age(j, m, a):
                 #print("et",prochain_mois_jours,"jours")
     elif m==m_a and j==j_a:
         print("Joyeux Anniversaire")
+
