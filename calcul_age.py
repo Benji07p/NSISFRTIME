@@ -28,6 +28,9 @@ def calculer_nombre_jours(j, m, a, j_a, m_a, a_a):
     if indice_date_naiss>indice_date_aujour:
         print("Vous ne pouvez pas rentrez une date après aujourd'hui !")
         return None
+ 
+    if j>jours_dans_mois(m,a) or j<1:
+        return None
     
     # Pour chaque année :
     j_f=0
@@ -125,7 +128,7 @@ def calculer_age(j, m, a):
     print("minutes:",minutes_age)
     print("secondes:",secondes_age)
     # Anniversaire ?
-    if prochain_mois_mois!=0 or prochain_mois_jours!=0:
+    if m!=m_a or j!=j_a:
         print("Ton prochain anniversaire est dans")
         print(prochain_anniv_jours,"jours")
         #En Travaux
@@ -135,4 +138,3 @@ def calculer_age(j, m, a):
                 #print("et",prochain_mois_jours,"jours")
     elif m==m_a and j==j_a:
         print("Joyeux Anniversaire")
-
